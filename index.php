@@ -1,3 +1,17 @@
+<?php 
+
+$allCharacters = '!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+$passwordGenerated = '';
+
+if (isset($_GET['passwordLength'])) {
+    for ($i = 0; $i < $_GET['passwordLength']; $i++) {
+        $passwordGenerated[$i] = $allCharacters[rand(0, $allCharacters.length)]
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +31,13 @@
             <input type="number" min="5" max="20" name="passwordLength">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        <?php 
+        if (isset($_GET['passwordLength'])) {
+            echo "<h3 class='text-center mt-4'>Here's your password:</h3>";
+            echo "<h4 class='text-center mt-4'>$passwordGenerated</h4>";
+        }
+        ?>
 
     </div>
 
