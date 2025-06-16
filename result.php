@@ -1,3 +1,11 @@
+<?php 
+
+include_once './functions.php';
+
+$passwordGenerated = generateRandomPassword();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

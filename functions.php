@@ -1,16 +1,21 @@
 <?php
 
-$allCharacters = '!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-$passwordGenerated = '';
 
-if (isset($_GET['passwordLength'])) {
+function generateRandomPassword()
+{
+    $allCharacters = '!#$%&()*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    $passwordGenerated = '';
 
-    for ($i = 0; $i < $_GET['passwordLength']; $i++) {
+    if (isset($_GET['passwordLength'])) {
+        $passwordGenerated = '';
+        $length = intval($_GET['passwordLength']);
 
-        $randomIndex = rand(0, strlen($allCharacters) - 1);
-        $passwordGenerated .= $allCharacters[$randomIndex];
+        for ($i = 0; $i < $length; $i++) {
+            $randomIndex = rand(0, strlen($allCharacters) - 1);
+            $passwordGenerated .= $allCharacters[$randomIndex];
+        }
+
+        return $passwordGenerated;
     }
-}
-
-?>
+};
