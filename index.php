@@ -10,8 +10,13 @@
 
 <body>
     <div class="container-fluid">
-        
+
         <h1 class="text-center mt-4">Password Generator</h1>
+
+        <form action="index.php" method="GET" class="form-control mt-4 p-5 d-flex flex-column align-items-center gap-4">
+            <input type="number" min="5" max="20" name="passwordLength">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
     </div>
 
