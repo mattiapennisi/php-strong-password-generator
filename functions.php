@@ -1,7 +1,5 @@
 <?php
 
-
-
 function generateRandomPassword()
 {
     $allCharacters = '!#$%&()*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
