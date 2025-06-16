@@ -6,7 +6,7 @@ $passwordGenerated = '';
 
 if (isset($_GET['passwordLength'])) {
     for ($i = 0; $i < $_GET['passwordLength']; $i++) {
-        $passwordGenerated[$i] = $allCharacters[rand(0, $allCharacters.length)]
+        $passwordGenerated[$i] = $allCharacters[rand(0, strlen($allCharacters))];
     }
 }
 
@@ -28,7 +28,7 @@ if (isset($_GET['passwordLength'])) {
         <h1 class="text-center mt-4">Password Generator</h1>
 
         <form action="index.php" method="GET" class="form-control mt-4 p-5 d-flex flex-column align-items-center gap-4">
-            <input type="number" min="5" max="20" name="passwordLength">
+            <input type="number" min="5" max="20" name="passwordLength" required>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
