@@ -1,8 +1,6 @@
-<?php 
+<?php
 
-include_once './functions.php';
-
-$passwordGenerated = generateRandomPassword();
+session_start();
 
 ?>
 
@@ -17,12 +15,19 @@ $passwordGenerated = generateRandomPassword();
 </head>
 
 <body>
-    <?php
-    if (isset($_GET['passwordLength'])) {
-        echo "<h3 class='text-center mt-4'>Here's your generated password:</h3>";
-        echo "<h4 class='text-center mt-4'>$passwordGenerated</h4>";
-    }
-    ?>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+
+
+        <?php
+        echo "<h3 class='mt-5'>Here's your generated password:</h3>";
+        echo "<h4 class='mt-4'>" . $_SESSION['generatedPassword'] . "</h4>";
+        ?>
+
+        <a href="index.php">
+            <button class="btn btn-primary d-flex align-self-center mt-5">Back to home</button>
+        </a>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>

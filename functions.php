@@ -14,6 +14,8 @@ function generateRandomPassword()
             $passwordGenerated .= $allCharacters[$randomIndex];
         }
 
+        header('Location: result.php');
+
         return $passwordGenerated;
     }
 };

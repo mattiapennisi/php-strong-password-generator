@@ -1,3 +1,13 @@
+<?php 
+
+include_once './functions.php';
+
+session_start();
+
+$_SESSION['generatedPassword'] = generateRandomPassword();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +23,7 @@
 
         <h1 class="text-center mt-4">Password Generator</h1>
 
-        <form action="result.php" method="GET" class="form-control mt-4 p-5 d-flex flex-column align-items-center gap-4">
+        <form action="index.php" method="GET" class="form-control mt-4 p-5 d-flex flex-column align-items-center gap-4">
             <input type="number" min="5" max="20" name="passwordLength" value='10' required>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
