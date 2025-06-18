@@ -4,7 +4,7 @@ function generateRandomPassword($passwordLength = 10, $allowForLetters = false, 
 {
     $lettersPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     $numbersPool = '0123456789';
-    $symbolsPool = '!@#$%^&*';
+    $symbolsPool = '!@#$%^&*_-';
     $allCharactersPool = '';
     $generatedPassword = '';
 
@@ -29,13 +29,18 @@ function generateRandomPassword($passwordLength = 10, $allowForLetters = false, 
             $randomIndex = rand(0, strlen($allCharactersPool) - 1);
             $generatedPassword .= $allCharactersPool[$randomIndex];
         }
-    } else if ($dontAllowForRepetitions) {
-        for ($i = 0; $i < $passwordLength; $i++) {
+    } else {
+        $attempts = 0;
+        $maxAttempts = 100;
+
+        while (strlen($generatedPassword) < $passwordLength && $attempts < $maxAttempts) {
             $randomIndex = rand(0, strlen($allCharactersPool) - 1);
 
             if (!str_contains($generatedPassword, $allCharactersPool[$randomIndex])) {
                 $generatedPassword .= $allCharactersPool[$randomIndex];
             }
+
+            $attempts++;
         }
     }
 

@@ -59,7 +59,7 @@ $_SESSION['generatedPassword'] = generateRandomPassword($passwordLength, $allowF
                         <form action="index.php" method="GET" class="d-flex flex-column align-items-center gap-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-light">Password Length</span>
-                                <input type="number" min="5" max="20" name="passwordLength" value="10"
+                                <input type="number" min="5" max="10" name="passwordLength" value="10"
                                     class="form-control text-center fw-bold" required>
                             </div>
 
