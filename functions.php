@@ -1,6 +1,6 @@
 <?php
 
-function generateRandomPassword()
+function generateRandomPassword($passwordLength = 10)
 {
     $lettersPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     $numbersPool = '0123456789';
@@ -24,16 +24,12 @@ function generateRandomPassword()
         $allCharactersPool = $lettersPool . $numbersPool . $symbolsPool;
     }
 
-    if (isset($_GET['passwordLength'])) {
-        $passwordLength = intval($_GET['passwordLength']);
-
-        for ($i = 0; $i < $passwordLength; $i++) {
-            $randomIndex = rand(0, strlen($allCharactersPool) - 1);
-            $generatedPassword .= $allCharactersPool[$randomIndex];
-        }
-
-        header('Location: result.php');
+    for ($i = 0; $i < $passwordLength; $i++) {
+        $randomIndex = rand(0, strlen($allCharactersPool) - 1);
+        $generatedPassword .= $allCharactersPool[$randomIndex];
     }
 
+    header('Location: result.php');
+    
     return $generatedPassword;
-};
+}
