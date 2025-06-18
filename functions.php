@@ -1,6 +1,6 @@
 <?php
 
-function generateRandomPassword($passwordLength = 10)
+function generateRandomPassword($passwordLength = 10, $allowForLetters = false, $allowForNumbers = false, $allowForSymbols = false)
 {
     $lettersPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     $numbersPool = '0123456789';
@@ -8,15 +8,15 @@ function generateRandomPassword($passwordLength = 10)
     $allCharactersPool = '';
     $generatedPassword = '';
 
-    if (isset($_GET['allowForLetters'])) {
+    if ($allowForLetters) {
         $allCharactersPool .= $lettersPool;
     }
 
-    if (isset($_GET['allowForNumbers'])) {
+    if ($allowForNumbers) {
         $allCharactersPool .= $numbersPool;
     }
 
-    if (isset($_GET['allowForSymbols'])) {
+    if ($allowForSymbols) {
         $allCharactersPool .= $symbolsPool;
     }
 
@@ -29,7 +29,5 @@ function generateRandomPassword($passwordLength = 10)
         $generatedPassword .= $allCharactersPool[$randomIndex];
     }
 
-    header('Location: result.php');
-    
     return $generatedPassword;
 }
