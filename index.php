@@ -1,10 +1,33 @@
-<?php 
+<?php
 
 include_once './functions.php';
 
 session_start();
 
-$_SESSION['generatedPassword'] = generateRandomPassword();
+$passwordLength = 10;
+$allowForLetters = false;
+$allowForNumbers = false;
+$allowForSymbols = false;
+
+if (isset($_GET['passwordLength'])){
+    $passwordLength = $_GET['passwordLength'];
+
+    header('Location: result.php');
+}
+
+if (isset($_GET['allowForLetters'])) {
+    $allowForLetters = true;
+}
+
+if (isset($_GET['allowForNumbers'])) {
+    $allowForNumbers = true;
+}
+
+if (isset($_GET['allowForSymbols'])) {
+    $allowForSymbols = true;
+}
+
+$_SESSION['generatedPassword'] = generateRandomPassword($passwordLength, $allowForLetters, $allowForNumbers, $allowForSymbols);
 
 ?>
 
@@ -27,8 +50,6 @@ $_SESSION['generatedPassword'] = generateRandomPassword();
             <input type="number" min="5" max="20" name="passwordLength" value='10' required>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-
-        <h2><?php echo $_SESSION['generatedPassword'] ?></h2>
 
     </div>
 
